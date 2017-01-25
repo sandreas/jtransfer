@@ -18,7 +18,7 @@ jtransfer started as a learning project and it still is, so much of the code cou
 
 ### Basic Usage
 
-***jtransfer*** is available as wrapper script, which includes shell instructions as well as the jar file in a binary or a valid windows called jtransfer:
+***jtransfer*** is available as wrapper script, which includes shell instructions as well as the jar file in a binary or a valid windows binary called jtransfer:
 
 ```
 jtransfer [options] source [destination]
