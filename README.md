@@ -8,7 +8,9 @@ jtransfer started as a learning project and it still is, so much of the code cou
 ## Requirements
 
 ***jtransfer*** uses Java streams and nio features to provide acceptable performance and
- therefore ***Java 8*** is required
+ therefore it requires
+ 
+  ***Java 8***
 
 ## Usage
 
@@ -16,7 +18,7 @@ jtransfer started as a learning project and it still is, so much of the code cou
 
 ### Basic Usage
 
-***jtransfer*** is available as wrapper script, which includes shell instructions as well as the jar file in a binary called jtransfer:
+***jtransfer*** is available as wrapper script, which includes shell instructions as well as the jar file in a binary or a valid windows called jtransfer:
 
 ```
 jtransfer [options] source [destination]
@@ -30,7 +32,7 @@ java -jar jtransfer.jar [options] source [destination]
 
 ### Search
 
-The destination pattern is optional, as well as the programm options. If you do not specify a destination pattern, ***jtransfer*** recursively lists all matching files and subdirectories, so it can be used as a search tool.
+The destination pattern is optional, as well as the programm options. If you do not specify a destination pattern, ***jtransfer*** recursively lists all matching files in all subdirectories, so it can also be used as a search tool.
 
 
 ### Copy, Rename, Resume
@@ -144,7 +146,7 @@ jtransfer "C:/Users/johndoe/pictures/(.*)\.jpeg" "C:/Users/johndoe/jpegs/$1\.jpg
 
 # jtransfer development
 
-***jtransfer*** uses gradle as build tool, so use the following instruction to build all jtransfer targets:
+***jtransfer*** is developed in Java 8, so JDK 8 must be installed in order to create builds. Gradle is used as build tool, so use the following instructions to build all jtransfer targets:
 
 ```
 git clone https://github.com/sandreas/jtransfer.git
@@ -156,11 +158,23 @@ cd jtransfer
 ./gradlew all
 ```
 
-As result, the directory builds/libs/ should contain the following files:
+If the build is successful, the directory builds should contain executable binaries and jar files:
 
-- ***jtransfer*** - binary shell wrapper (Unix only), that contains shell script AND jar in one file - use chmod +x to make executable
-- ***jtransfer.jar*** - jar file only, can be run with java -jar jtransfer.jar
+## Linux / Unix / MacOS
 
+***jtransfer*** comes with a binary shell wrapper, that contains shell script AND jar in one file. Use chmod +x to make it executable:
+
+build/libs/***jtransfer***
+
+## Windows
+***jtransfer*** comes with a native executable that works together with `build/launch4j/lib/jtransfer.jar`
+
+build/launch4j/***jtransfer.exe*** 
+
+## OS Independent
+jar file only, can be run with `java -jar jtransfer.jar`
+
+build/libs/***jtransfer.jar***
 
 ## IDE recommendation
 
