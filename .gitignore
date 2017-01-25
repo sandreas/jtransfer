@@ -12,4 +12,5 @@
 hs_err_pid*
 
 #.idea
+!/gradle/wrapper/gradle-wrapper.jar
 /fixtures/tmp
