@@ -110,3 +110,7 @@ task all(dependsOn: project.tasks.createExe) {
         f.append(file(fatJarFile).getBytes())
     }
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3' //we want gradle 2.10 to run this project
+}
