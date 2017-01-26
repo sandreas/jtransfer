@@ -143,7 +143,7 @@ jtransfer '/tmp/(.*)\.jpeg' '/tmp/$1\.jpg' --move
 #### Windows
 Use double quotes (") to enclose patterns and slashes as directory separator, because on Windows single quotes are no valid argument delimiters.
  
-> Although single quotes and backslaches should work in many cases (jtransfer provides a workaround), they might lead to unexpected behaviour and should be avoided on windows. 
+> Although single quotes and backslashes should work in many cases (jtransfer provides a workaround), they might lead to unexpected behaviour and should be avoided on windows. 
 
 ***Example:***
 
@@ -166,7 +166,7 @@ cd jtransfer
 ./gradlew all
 ```
 
-If the build is successful, the directory builds should contain executable binaries and jar files:
+If the build is successful, the directory `builds` should contain executable binaries and jar files:
 
 ## Linux / Unix / MacOS
 
