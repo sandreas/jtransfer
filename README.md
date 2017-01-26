@@ -42,6 +42,14 @@ The destination pattern is optional, as well as the programm options. If you do 
 
 ### Examples
 
+Before you use jtransfer, you should know, that jtransfer DOES NOT expand * like other command line tools. So 
+```
+# DOES NOT WORK as you might expect!
+jtransfer '/tmp/*.jpg' 
+```
+DOES NOT WORK as you might expect! It usually is a good idea, to use the ***--dry-run*** option, to see, what jtransfer is going to do with your files.
+
+
 Recursive listing of /tmp directory and its matchings using a simple regular expression:
  
 ```
