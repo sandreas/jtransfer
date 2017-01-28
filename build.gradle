@@ -15,9 +15,6 @@ buildscript {
     }
 }
 
-plugins {
-    id 'edu.sc.seis.launch4j' version '2.2.0'
-}
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 
@@ -91,14 +88,8 @@ shadowJar {
 }
 
 
-launch4j {
-    // icon = 'sync.ico'
-    copyConfigurable = project.tasks.shadowJar.outputs.files
-    jar = "lib/${project.tasks.shadowJar.archiveName}"
-}
-
 // task fatCapsule(type: Jar, dependsOn: jar) {
-task all(dependsOn: project.tasks.createExe) {
+task all(dependsOn: project.tasks.shadowJar) {
     def integratedShellScript = "build/libs/jtransfer"
     def fatJarFile = "build/libs/${project.tasks.shadowJar.archiveName}"
     // (new File('xxxoutput')).text = file('shell-wrapper.sh').getText() + file(fatJarFile).getText()
@@ -109,6 +100,35 @@ task all(dependsOn: project.tasks.createExe) {
         f.append(file('build-tools/shell-wrapper.sh').getText())
         f.append(file(fatJarFile).getBytes())
     }
+}
+
+task releaseLinuxUnixMacOS(type: Zip, dependsOn:project.tasks.all) {
+    from 'build/libs/'
+    include 'jtransfer'
+    archiveName 'jtransfer-linux_unix_macos.zip'
+    destinationDir(file("build/release/${project.version}/"))
+}
+
+task releaseWin(type: Zip, dependsOn:project.tasks.all) {
+    from 'build-tools/'
+    include 'jtransfer.bat'
+    from 'build'
+    include 'libs/jtransfer.jar'
+    archiveName 'jtransfer-win.zip'
+    destinationDir(file("build/release/${project.version}/"))
+}
+
+task releaseJarOnly(type: Zip, dependsOn:project.tasks.all) {
+    from 'build/libs/'
+    include 'jtransfer.jar'
+    archiveName 'jtransfer-jar_only.zip'
+    destinationDir(file("build/release/${project.version}/"))
+}
+
+task release() {
+    dependsOn 'releaseLinuxUnixMacOS'
+    dependsOn 'releaseWin'
+    dependsOn 'releaseJarOnly'
 }
 
 task wrapper(type: Wrapper) {

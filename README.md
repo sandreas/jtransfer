@@ -7,7 +7,7 @@ jtransfer started as a learning project and it still is, so much of the code cou
 
 ## Requirements
 
-***jtransfer*** uses Java streams and nio features to provide acceptable performance and
+***jtransfer*** uses Java lambda expressions and nio features to provide acceptable performance and
  therefore it requires
  
   ***Java 8***
@@ -18,13 +18,13 @@ jtransfer started as a learning project and it still is, so much of the code cou
 
 ### Basic Usage
 
-***jtransfer*** is available as wrapper script, which includes shell instructions as well as the jar file in a binary or a valid windows binary called jtransfer:
+***jtransfer*** is available as wrapper script, which includes shell instructions as well as the jar file in a binary or a valid windows batch wrapper called jtransfer.bat:
 
 ```
 jtransfer [options] source [destination]
 ```
 
-If you do not use the binary wrapper or another script, you can always use:
+If you do not use the binary wrapper nor batch script, you can always use:
 
 ```
 java -jar jtransfer.jar [options] source [destination]
@@ -163,26 +163,30 @@ git clone https://github.com/sandreas/jtransfer.git
 cd jtransfer
 
 
-./gradlew all
+./gradlew release
 ```
 
-If the build is successful, the directory `builds` should contain executable binaries and jar files:
+If the build is successful, the directory `builds/release/<version>/` should contain releases for all operating systems:
 
 ## Linux / Unix / MacOS
 
-***jtransfer*** comes with a binary shell wrapper, that contains shell script AND jar in one file. Use chmod +x to make it executable:
+***jtransfer*** comes with a binary shell wrapper, that contains shell script AND jar in one file. 
 
-build/libs/***jtransfer***
+build/release/<version>/***jtransfer-linux_unix_macos.zip***
+
+To use it, just unzip and use chmod +x to make it executable.
 
 ## Windows
-***jtransfer*** comes with a native executable that works together with `build/launch4j/lib/jtransfer.jar`
+***jtransfer*** comes with a windows batch wrapper `jtransfer.bat` that works together with `libs/jtransfer.jar`
 
-build/launch4j/***jtransfer.exe*** 
+build/release/<version>/***jtransfer-win.zip***
+
+To use it, just unzip and add the target directory your %Path% environment variable.
 
 ## OS Independent
 jar file only, can be run with `java -jar jtransfer.jar`
 
-build/libs/***jtransfer.jar***
+build/libs/***jtransfer-jar_only.zip***
 
 ## IDE recommendation
 
