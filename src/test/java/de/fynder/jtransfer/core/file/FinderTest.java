@@ -1,12 +1,12 @@
 package de.fynder.jtransfer.core.file;
 
+import de.fynder.jtransfer.core.filter.MatchPatternFilter;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Before;
 import org.mockito.Mockito;
 
 import java.io.IOException;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static org.mockito.Mockito.when;
@@ -45,15 +45,7 @@ public class FinderTest extends TestCase {
         when(sourceMock.hasPattern()).thenReturn(true);
         when(sourceMock.getPattern()).thenReturn(mockLogFilePattern());
 
-        subject.addFilter((s, basicAttributes, p) -> {
-            if (p != null) {
-                Matcher m = p.matcher(s);
-                if (!m.matches()) {
-                    return false;
-                }
-            }
-            return true;
-        });
+        subject.addFilter(new MatchPatternFilter());
 
         String[] expected = new String[]{
                 "fixtures/de/fynder/jtransfer/core/file/Finder/subdir/subsubdir/0-9.log"
