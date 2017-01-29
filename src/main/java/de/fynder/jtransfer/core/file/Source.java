@@ -5,12 +5,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.regex.Pattern;
 
-public class FindLocation {
+public class Source {
 
     private Pattern lookupPattern;
     private Path lookupPath;
 
-    FindLocation(String s) {
+    Source(String s) {
         parse(s);
     }
 

@@ -1,4 +1,4 @@
-package de.fynder.jtransfer.core.file;
+package de.fynder.jtransfer.toolbox.location;
 
 
 import de.fynder.jtransfer.interfaces.FilterInterface;
@@ -12,11 +12,11 @@ import java.util.stream.Stream;
 
 public class FilteredWalker implements FilterInterface {
     private ArrayList<FilterInterface> filters = new ArrayList<>();
-    public void addFilter(FilterInterface filter) {
+    void addFilter(FilterInterface filter) {
         filters.add(filter);
     }
 
-    public Stream<String> walk(Path p, FileVisitOption... options) throws IOException {
+    Stream<String> walk(Path p, FileVisitOption... options) throws IOException {
         Stream<String> walker = Files.walk(p, options).map(Path::toString);
         if(filters.size() > 0) {
             walker = walker.filter(this::matches);

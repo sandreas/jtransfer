@@ -1,6 +1,5 @@
 package de.fynder.jtransfer.toolbox.location;
 
-import de.fynder.jtransfer.core.file.FilteredWalker;
 import de.fynder.jtransfer.util.DateUtility;
 import de.fynder.jtransfer.util.Hasher;
 import de.fynder.jtransfer.core.location.AbstractTransferLocation;

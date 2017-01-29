@@ -1,5 +1,6 @@
-package de.fynder.jtransfer.core.file;
+package de.fynder.jtransfer.toolbox.location;
 
+import de.fynder.jtransfer.toolbox.location.FilteredWalker;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,14 +23,14 @@ public class FilteredWalkerTest extends TestCase {
     public void testWalkWithoutFilter() throws IOException {
         String[] actual = walker.walk(fixturesPath).toArray(String[]::new);
         String[] expected = new String[] {
-                "fixtures/de/fynder/jtransfer/core/file/FilteredWalker",
-                "fixtures/de/fynder/jtransfer/core/file/FilteredWalker/0-9.txt",
-                "fixtures/de/fynder/jtransfer/core/file/FilteredWalker/0-9a-z.txt",
-                "fixtures/de/fynder/jtransfer/core/file/FilteredWalker/a-z0-9a-z.txt",
-                "fixtures/de/fynder/jtransfer/core/file/FilteredWalker/subdir",
-                "fixtures/de/fynder/jtransfer/core/file/FilteredWalker/subdir/subfile.txt",
-                "fixtures/de/fynder/jtransfer/core/file/FilteredWalker/subdir/subsubdir",
-                "fixtures/de/fynder/jtransfer/core/file/FilteredWalker/subdir/subsubdir/0-9.txt"
+                "fixtures/de/fynder/jtransfer/toolbox/file/FilteredWalker",
+                "fixtures/de/fynder/jtransfer/toolbox/file/FilteredWalker/0-9.txt",
+                "fixtures/de/fynder/jtransfer/toolbox/file/FilteredWalker/0-9a-z.txt",
+                "fixtures/de/fynder/jtransfer/toolbox/file/FilteredWalker/a-z0-9a-z.txt",
+                "fixtures/de/fynder/jtransfer/toolbox/file/FilteredWalker/subdir",
+                "fixtures/de/fynder/jtransfer/toolbox/file/FilteredWalker/subdir/subfile.txt",
+                "fixtures/de/fynder/jtransfer/toolbox/file/FilteredWalker/subdir/subsubdir",
+                "fixtures/de/fynder/jtransfer/toolbox/file/FilteredWalker/subdir/subsubdir/0-9.txt"
         };
 
         Assert.assertArrayEquals(expected, actual);

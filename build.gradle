@@ -27,7 +27,7 @@ apply plugin: 'com.github.johnrengelman.shadow'
 
 
 mainClassName = 'de.fynder.jtransfer.Main'
-version = '0.2'
+version = '0.3'
 // sourceCompatibility = 1.8
 
 // In this section you declare where to find the dependencies of your project
