@@ -13,9 +13,15 @@ public class DateUtility {
 
     private static Calendar c = Calendar.getInstance();
 
-
+    public static Date strToDate(String date) {
+        return strToDate(date, new Date());
+    }
 
     static Date strToDate(String date, Date referenceDate) {
+        return strToDate(date, referenceDate, false);
+    }
+
+    private static Date strToDate(String date, Date referenceDate, boolean negateAmount) {
         c.setTime(referenceDate);
         if(date.equals("now")) {
             return c.getTime();
@@ -24,7 +30,9 @@ public class DateUtility {
         if (diffPattern.matcher(date).matches()) {
             String[] parts = date.split(" ");
             int amount = Integer.parseInt(parts[0]);
-
+            if(negateAmount) {
+                amount *= -1;
+            }
             if(parts[1].indexOf("day") == 0) {
                 c.add(Calendar.DAY_OF_YEAR, amount);
             } else if(parts[1].indexOf("week") == 0) {
@@ -71,7 +79,12 @@ public class DateUtility {
         return null;
     }
 
-    public static Date strToDate(String date) {
-        return strToDate(date, new Date());
+
+    static Date strToAge(String date, Date reference) {
+        return strToDate(date, reference, true);
     }
+
+//    public static Date strToAge(String date) {
+//        return strToAge(date, new Date());
+//    }
 }
