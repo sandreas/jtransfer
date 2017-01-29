@@ -19,7 +19,7 @@ public class SourceTest extends TestCase {
         subject = new Source("fixtures/de/fynder/jtransfer/core/file/Source/");
         assertFalse(subject.hasPattern());
         assertFalse(subject.isFile());
-        assertNull(subject.getPattern());
+        assertNull(subject.getPatternAsString());
         assertEquals("fixtures/de/fynder/jtransfer/core/file/Source", subject.getLocationAsString());
     }
 
@@ -27,7 +27,7 @@ public class SourceTest extends TestCase {
         subject = new Source("fixtures/de/fynder/jtransfer/core/file/Source/dummy-file.txt");
         assertFalse(subject.hasPattern());
         assertTrue(subject.isFile());
-        assertNull(subject.getPattern());
+        assertNull(subject.getPatternAsString());
         assertEquals("fixtures/de/fynder/jtransfer/core/file/Source/dummy-file.txt", subject.getLocationAsString());
     }
 
@@ -35,7 +35,7 @@ public class SourceTest extends TestCase {
         subject = new Source("fixtures/de/fynder/jtransfer/core/file/Source/(.*)");
         assertTrue(subject.hasPattern());
         assertFalse(subject.isFile());
-        assertEquals("fixtures/de/fynder/jtransfer/core/file/Source/(.*)", subject.getPattern().toString());
+        assertEquals("fixtures/de/fynder/jtransfer/core/file/Source/(.*)", subject.getPatternAsString());
         assertEquals("fixtures/de/fynder/jtransfer/core/file/Source", subject.getLocationAsString());
     }
 
@@ -43,7 +43,7 @@ public class SourceTest extends TestCase {
         subject = new Source("fixtures/de/fynder/jtransfer/core/file/Source/dummy-(.*)\\.txt");
         assertTrue(subject.hasPattern());
         assertFalse(subject.isFile());
-        assertEquals("fixtures/de/fynder/jtransfer/core/file/Source/dummy-(.*)\\.txt", subject.getPattern().toString());
+        assertEquals("fixtures/de/fynder/jtransfer/core/file/Source/dummy-(.*)\\.txt", subject.getPatternAsString());
         assertEquals("fixtures/de/fynder/jtransfer/core/file/Source", subject.getLocationAsString());
     }
 

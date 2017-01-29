@@ -8,9 +8,9 @@ import java.util.regex.Pattern;
 
 public class MatchPatternFilter implements FinderFilterInterface {
     @Override
-    public boolean matches(String path, BasicFileAttributes basicAttributes, Pattern pattern) {
+    public boolean matches(String path, BasicFileAttributes basicAttributes, String pattern) {
         if (pattern != null) {
-            Matcher m = pattern.matcher(path);
+            Matcher m = Pattern.compile(pattern).matcher(path);
             if (!m.matches()) {
                 return false;
             }

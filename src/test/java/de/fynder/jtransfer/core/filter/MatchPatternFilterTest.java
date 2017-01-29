@@ -18,12 +18,17 @@ public class MatchPatternFilterTest extends TestCase {
 
     public void testTxtPattern() throws IOException {
         String matchingPath = "de/fixtures/dummy-file.txt";
-        Pattern pattern = Pattern.compile("de/fixtures/(.*)\\.txt");
+        String pattern = "de/fixtures/(.*)\\.txt";
 
         assertTrue(subject.matches(matchingPath, null, pattern));
 
         String nonMatchingPath = "de/fixtures/dummy-file.log";
         assertFalse(subject.matches(nonMatchingPath, null, pattern));
+    }
+
+    public void testEmptyPattern() throws IOException {
+        String matchingPath = "de/fixtures/dummy-file.txt";
+        assertTrue(subject.matches(matchingPath, null, null));
     }
 
 

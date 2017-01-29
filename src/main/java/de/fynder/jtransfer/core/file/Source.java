@@ -3,12 +3,11 @@ package de.fynder.jtransfer.core.file;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.regex.Pattern;
 
 public class Source {
 
-    private Pattern lookupPattern;
     private Path lookupPath;
+    private String lookupPatternAsString;
 
     Source(String s) {
         parse(s);
@@ -17,8 +16,7 @@ public class Source {
     private void parse(String findPattern) {
         String validPart = findPattern;
         int lastSlashPos;
-        lookupPattern = null;
-        String lookupPatternAsString = "";
+        lookupPatternAsString = "";
         lookupPath = null;
         do {
             try {
@@ -36,10 +34,9 @@ public class Source {
         } while (lastSlashPos > 0);
 
         if (lookupPatternAsString.length() > 0) {
-            lookupPatternAsString = lookupPatternAsString.substring(1);
-            lookupPattern = Pattern.compile(normalizeDirectorySeparatorsToSlashes(lookupPath.toString()) + "/" + lookupPatternAsString, Pattern.CASE_INSENSITIVE);
+            lookupPatternAsString = normalizeDirectorySeparatorsToSlashes(lookupPath.toString()) + "/" + lookupPatternAsString.substring(1);
         } else {
-            lookupPattern = null;
+            lookupPatternAsString = null;
         }
     }
 
@@ -65,15 +62,15 @@ public class Source {
     }
 
     boolean hasPattern() {
-        return lookupPattern != null;
+        return lookupPatternAsString != null;
     }
 
     public boolean isFile() {
         return Files.isRegularFile(lookupPath);
     }
 
-    Pattern getPattern() {
-        return lookupPattern;
+    String getPatternAsString() {
+        return lookupPatternAsString;
     }
 
     String getLocationAsString() {

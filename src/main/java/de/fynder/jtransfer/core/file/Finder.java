@@ -26,29 +26,16 @@ class Finder {
 
 
     private boolean filter(Path path, BasicFileAttributes basicFileAttributes) {
-//        if(source.hasPattern()) {
-//            String s = path.toString();
-//            Pattern p = source.getPattern();
-//            Matcher m = p.matcher(s);
-//            if(!m.matches()) {
-//                return false;
-//            }
-//        }
-
         for(FinderFilterInterface f : filters) {
-            if(!f.matches(path.toString(), basicFileAttributes, source.getPattern())) {
+            if(!f.matches(path.toString(), basicFileAttributes, source.getPatternAsString())) {
                 return false;
             }
         }
 
         return true;
-
-        // lookupPattern.matcher(normalizeDirectorySeparatorsToSlashes(path)).matches()
     }
 
     void addFilter(FinderFilterInterface f) {
         filters.add(f);
     }
-
-    // lookupPattern.matcher(normalizeDirectorySeparatorsToSlashes(path)).matches()
 }

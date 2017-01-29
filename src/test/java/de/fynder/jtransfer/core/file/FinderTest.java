@@ -43,7 +43,7 @@ public class FinderTest extends TestCase {
     public void testWithPatternForLogFiles() throws IOException {
         when(sourceMock.getLocationAsString()).thenReturn(fixturesPath);
         when(sourceMock.hasPattern()).thenReturn(true);
-        when(sourceMock.getPattern()).thenReturn(mockLogFilePattern());
+        when(sourceMock.getPatternAsString()).thenReturn(mockLogFilePattern());
 
         subject.addFilter(new MatchPatternFilter());
 
@@ -53,8 +53,21 @@ public class FinderTest extends TestCase {
         Assert.assertArrayEquals(expected, subject.walk(sourceMock).toArray());
     }
 
-    private Pattern mockLogFilePattern() {
-        return Pattern.compile(fixturesPath + "/(.*)\\.log");
+//    public void testWithPatternForLogFiles() throws IOException {
+//        when(sourceMock.getLocationAsString()).thenReturn(fixturesPath);
+//        when(sourceMock.hasPattern()).thenReturn(true);
+//        when(sourceMock.getPattern()).thenReturn(mockLogFilePattern());
+//
+//        subject.addFilter(new MatchPatternFilter());
+//
+//        String[] expected = new String[]{
+//                "fixtures/de/fynder/jtransfer/core/file/Finder/subdir/subsubdir/0-9.log"
+//        };
+//        Assert.assertArrayEquals(expected, subject.walk(sourceMock).toArray());
+//    }
+
+    private String mockLogFilePattern() {
+        return fixturesPath + "/(.*)\\.log";
     }
 
 
